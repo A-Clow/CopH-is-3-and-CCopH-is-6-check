@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 This code is to test if an input graph $H = (V,E)$ has cop number $k$ for graphs we know have attacking cop number at least $2k$. 
 At least for now the goal will be to check in the case that $k = 3$ where our graphs H are G^2 - E for a $(3,9)$-cage $G$. 
@@ -48,7 +47,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from cop_number.cop import copk,cop_num
 
-"""We are specfically interested in checking the cop number of graphs constructed from $(3,9)$-cages. As such I will include the full list of $(3,9)$-cages stroed as graphs in networkx below.
+"""We are specfically interested in checking the cop number of graphs constructed from $(3,9)$-cages. As such I will include the full list of $(3,9)$-cages stroed
+as graphs in networkx below.
 
 This is not original work in the sense that the list of $(3,9)$-cages can be found at http://users.cecs.anu.edu.au/~bdm/papers/ninecage.pdf
 
@@ -56,8 +56,9 @@ What is original work is generating these graphs as networkx objects and conside
 To this end we write the next bit of code to create all 18 $(3,9)$-cages as networkx objects, along with $G^2-E$ for each $(3,9)$-cage, as as networkx objects.
 """
 
-# This cell generates all 18 (3,9)-cages and all graph H = G^2 - E where G is a (3,9)-cage as objects in networkx
-# The list of graphs H is stored as a list, named HList
+# These functions are used to create all graphs H = G^2 - E we are interested in as networkx objects
+# from the known list of all (3,9)-cages all 18 (3,9)-cages G.
+# The list of graphs H = G^2 - E is stored as a list, named HList
 
 # This function takes an integer n
 # and will return a list containing all tuples (i,i+1) mod n
@@ -90,6 +91,8 @@ def square_deleteOG(G):
   H.add_edges_from(H_Edges)
   return H
 
+# Here the i^th (3,9)-cages has edges in EList_i union the Hamiltonian cycle 1-58
+# Using out last two functions we generate all the graphs H
 Cycle_List = cycle_generator(58)
 
 
